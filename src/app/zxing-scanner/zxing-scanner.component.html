@@ -1,0 +1,7 @@
+<video #video [style.object-fit]="videoFitMode">
+    <p>
+      Your browser does not support this feature, please try to upgrade it.
+    </p>
+</video>
+<ng-container *ngIf="_zoomAvailable"></ng-container>
+<input class="slider" type="range" step=0.5 [min]="_zoomConfig.min" [max]="_zoomConfig.max" [value]="_zoomConfig.value" (input)="zoomCtrlChanged($event.target.value)">

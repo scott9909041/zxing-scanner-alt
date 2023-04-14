@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScanService } from './scan.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'zxing-scanner';
+
+  constructor(private scanService: ScanService) {}
+
+  startScan(): void {
+    this.scanService.start().subscribe(resp => setTimeout(() => alert(resp)));
+  }
+
+  stopScan(): void {
+    this.scanService.stop();
+  }
 }
